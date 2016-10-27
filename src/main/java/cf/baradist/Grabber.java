@@ -1,6 +1,7 @@
 package cf.baradist;
 
 import cf.baradist.Util.Configuration;
+import cf.baradist.Util.Utils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
@@ -68,9 +69,9 @@ public class Grabber {
                         + fileName;
                 File file = new File(path + ".mp3");
                 if (!file.exists()) {
-                    System.out.print(i + "\t" + "\t" + fileName);
-                    FileUtils.copyURLToFile(new URL((String) mp3.get("url")), file);
-                    System.out.println("\t" + "Done");
+                    System.out.print(i + "\t" + fileName);
+                    int copyed = Utils.copyURLToFile(new URL((String) mp3.get("url")), file);
+                    System.out.println("\t" + copyed);
                 }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
